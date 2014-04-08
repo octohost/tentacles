@@ -3,6 +3,7 @@ tentacles
 
 Distributed HTTP proxy
 
+```
 sudo apt-get upgrade
 sudo apt-get redis
 sudo apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make
@@ -36,3 +37,4 @@ curl http://flying-squirrel.myapp.com:8080/
 # curl for redis data
 curl http://127.0.0.1:8080/redis_set_container?name=flying-squirrel&endpoint=127.0.0.1:81
 curl http://127.0.0.1:8080/redis_get_container?name=flying-squirrel
+```
