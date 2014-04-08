@@ -35,6 +35,6 @@ cat /etc/hosts
 curl http://flying-squirrel.myapp.com:8080/
 
 # curl for redis data
-curl http://127.0.0.1:8080/redis_set_container?name=flying-squirrel&endpoint=127.0.0.1:8081
-curl http://127.0.0.1:8080/redis_get_container?name=flying-squirrel
+curl http://127.0.0.1:8080/redis_set?name=flying-squirrel&endpoint=127.0.0.1:8081
+curl http://127.0.0.1:8080/redis_get?name=flying-squirrel
 ```
