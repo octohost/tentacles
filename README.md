@@ -9,6 +9,7 @@ sudo apt-get redis
 sudo apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make
 wget http://openresty.org/download/ngx_openresty-1.5.11.1.tar.gz
 tar xzvf ngx_openresty
+configure
 make
 make install
 
@@ -32,9 +33,9 @@ cat /etc/hosts
 127.0.0.1 flying-squirrel.myapp.com
 
 # curl for root proxy
-curl http://flying-squirrel.myapp.com:8080/
+curl http://flying-squirrel.myapp.com/
 
 # curl for redis data
-curl http://127.0.0.1:8080/redis_set?name=flying-squirrel&endpoint=127.0.0.1:8081
-curl http://127.0.0.1:8080/redis_get?name=flying-squirrel
+curl http://127.0.0.1/redis_set?domain=flying-squirrel&endpoint=127.0.0.1:8081
+curl http://127.0.0.1/redis_get?domain=flying-squirrel
 ```
