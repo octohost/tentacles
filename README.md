@@ -1,7 +1,7 @@
 tentacles
 =========
 
-Distributed HTTP proxy
+Distributed HTTP proxy using Redis as the virtualhost backend.
 
 ```
 sudo apt-get upgrade
@@ -36,6 +36,6 @@ cat /etc/hosts
 curl http://flying-squirrel.myapp.com/
 
 # curl for redis data
-curl http://127.0.0.1/redis_set?domain=flying-squirrel&endpoint=127.0.0.1:8081
-curl http://127.0.0.1/redis_get?domain=flying-squirrel
+curl http://127.0.0.1:8080/set?domain=flying-squirrel&endpoint=127.0.0.1:8081
+curl http://127.0.0.1:8080/get?domain=flying-squirrel
 ```
