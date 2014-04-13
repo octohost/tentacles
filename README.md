@@ -1,41 +1,47 @@
 tentacles
 =========
 
-Distributed HTTP proxy using Redis as the virtualhost backend.
+Distributed HTTP proxy using Openresty with configuration data inside Redis.
+
+Install Redis:
 
 ```
-sudo apt-get upgrade
-sudo apt-get redis
-sudo apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make
-wget http://openresty.org/download/ngx_openresty-1.5.11.1.tar.gz
-tar xzvf ngx_openresty
-configure
-make
-make install
-
-mkdir ~/work
-cd ~/work
-mkdir logs/ conf/
-
-cd ~/work/conf
-cp tentacles/conf/nginx.conf
-
-PATH=/usr/local/openresty/nginx/sbin:$PATH
-export PATH
-
-# restart nginx
-kill -15 `pgrep nginx`;nginx -p `pwd` -c conf/nginx.conf
-
-# start with a test for upstream
-kill -15 `pgrep nginx`;nginx -p `pwd` -c conf/nginx.conf;nginx -p `pwd` -c conf/upstream.conf;
-
-cat /etc/hosts
-127.0.0.1 flying-squirrel.myapp.com
-
-# curl for root proxy
-curl http://flying-squirrel.myapp.com/
-
-# curl for redis data
-curl http://127.0.0.1:8080/set?domain=flying-squirrel&endpoint=127.0.0.1:8081
-curl http://127.0.0.1:8080/get?domain=flying-squirrel
+sudo add-apt-repository ppa:chris-lea/redis-server
+sudo apt-get update
+sudo apt-get install -y redis
 ```
+
+Install Openresty:
+
+```
+sudo apt-get install -y libgd2-noxpm libssl0.9.8
+sudo echo "deb     http://dl.bintray.com/octohost/openresty /" > /etc/apt/sources.list.d/openresty.list
+sudo apt-get update
+sudo apt-get install openresty
+sudo service nginx stop
+```
+
+Setup the config files:
+
+```
+cd /etc/nginx/
+sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/proxy.conf
+sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/upstream.conf
+sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/api.conf
+cd /etc/init.d/
+sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/proxy
+sudo chmod 755 proxy
+# Install SSL cert and key or comment out the SSL portions of upstream.conf
+sudo service proxy start
+```
+
+The proxy service runs on port 80. The /get and /set interface in api.conf runs on port 8080.
+
+To /get and /set virtual hosts.
+
+```
+curl http://127.0.0.1:8080/set?domain=flying-squirrel.example.com&endpoint=127.0.0.1:8081
+curl http://127.0.0.1:8080/get?domain=flying-squirrel.example.com
+```
+
+This has all been folded into [octohost](http://www.octohost.io)
