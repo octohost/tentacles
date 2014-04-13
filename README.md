@@ -28,6 +28,9 @@ cd /etc/nginx/
 sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/proxy.conf
 sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/upstream.conf
 sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/api.conf
+cd /etc/default/
+sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/default-proxy
+sudo mv default-proxy proxy
 cd /etc/init.d/
 sudo wget https://raw.githubusercontent.com/octohost/octohost-cookbook/master/files/default/proxy
 sudo chmod 755 proxy
