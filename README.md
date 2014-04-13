@@ -45,3 +45,5 @@ curl http://127.0.0.1:8080/get?domain=flying-squirrel.example.com
 ```
 
 This has all been folded into [octohost](http://www.octohost.io). We are using the [Redis cookbook](https://github.com/darron/redis-cookbook) and the [Openresty cookbook](https://github.com/darron/openresty-cookbook) inside the [octohost cookbook](https://github.com/octohost/octohost-cookbook).
+
+Huge thanks to [@alkema](https://github.com/alkema) who got it running.
