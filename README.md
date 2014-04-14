@@ -38,14 +38,14 @@ sudo chmod 755 proxy
 sudo service proxy start
 ```
 
-The proxy service runs on port 80. The /get interface for nginx in api.conf runs on port 8081.
+The proxy service runs on port 80. The /get interface for nginx in api.conf runs on port 81.
 
 To /get, /set and /del virtual hosts.
 
 
 ```
 docker pull octohost/tentacles
-docker run -d -e REDIS_URL=redis://interface.ip.address.here:6379 -p 8080:5000 octohost/tentacles
+docker run -d -e REDIS_URL=redis://interface.ip.address.here:6379 -p 82:5000 octohost/tentacles
 
 root@octohost:# octo proxy:get dude.example.com
 root@octohost:# octo proxy:set dude.example.com 12345
@@ -55,9 +55,9 @@ root@octohost:# octo proxy:rm dude.example.com
 root@octohost:# octo proxy:get dude.example.com
 root@octohost:#
 
-curl http://127.0.0.1:8080/set?domain=flying-squirrel.example.com&endpoint=127.0.0.1:12345
-curl http://127.0.0.1:8080/get?domain=flying-squirrel.example.com
-curl http://127.0.0.1:8080/del?domain=flying-squirrel.example.com
+curl http://127.0.0.1:82/set?domain=flying-squirrel.example.com&endpoint=127.0.0.1:12345
+curl http://127.0.0.1:82/get?domain=flying-squirrel.example.com
+curl http://127.0.0.1:82/del?domain=flying-squirrel.example.com
 ```
 
 This has all been folded into [octohost](http://www.octohost.io). We are using the [Redis cookbook](https://github.com/darron/redis-cookbook) and the [Openresty cookbook](https://github.com/darron/openresty-cookbook) inside the [octohost cookbook](https://github.com/octohost/octohost-cookbook).
