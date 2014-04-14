@@ -40,6 +40,8 @@ sudo service proxy start
 
 The proxy service runs on port 80. The /get interface for nginx in api.conf runs on port 81.
 
+The octohost/tentacles container should run on port 82.
+
 To /get, /set and /del virtual hosts.
 
 
