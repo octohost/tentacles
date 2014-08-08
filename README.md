@@ -1,6 +1,8 @@
 tentacles
 =========
 
+# NOTE: DEPRECATED - NOT USED ANYMORE.
+
 Distributed HTTP proxy using Openresty with configuration data inside Redis.
 
 Install Redis:
